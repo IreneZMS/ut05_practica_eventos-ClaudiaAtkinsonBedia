@@ -2,6 +2,7 @@ window.onload = inicio;
 
 function inicio()
 {
+    //HOLA CLAUDIA ESTO ES UNA PRUEBA 
     let divNum = document.getElementById("numero");
     divNum.addEventListener("dblclick", calcularTriple);
     divNum.addEventListener("mouseover", cambiarColor);
