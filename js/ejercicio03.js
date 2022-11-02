@@ -17,4 +17,3 @@ function cambiarColor2()
 function volverABlanco()
 {
     caja.style.backgroundColor = "white";
-}
