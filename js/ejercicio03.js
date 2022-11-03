@@ -1,34 +1,30 @@
 let caja = document.getElementById("info");
-let body = document.getElementById("cuerpo");
 let ratonTeclado = document.getElementById("rT");
-const pageX = document.getElementById("x");
-const pageY = document.getElementById("y");
-let teclaP = document.getElementById("teclaPulsada");
-let codTeclaP = document.getElementById("codigoTeclaPulsada");
-body.addEventListener("mousedown", cambiarColor);
-body.addEventListener("keypress", cambiarColor2);
-body.addEventListener("mousemove", volverABlanco);
-body.addEventListener("mousemove", funcionRaton);
-body.addEventListener("keypress", teclado);
-body.addEventListener("mousemove", updateDisplay, false);
-body.addEventListener("mouseenter", updateDisplay, false);
-body.addEventListener("mouseleave", updateDisplay, false);
-body.addEventListener("keypress", presionarTecla);
+let parr1 = document.getElementById("parrafo1");
+let parr2 = document.getElementById("parrafo2");
+document.addEventListener("mousedown", cambiarColor);
+document.addEventListener("mousemove", volverABlanco);
+document.addEventListener("mousemove", funcionRaton);
+document.addEventListener("mousemove", posicionPag, false);
+document.addEventListener("mouseenter", posicionPag, false);
+document.addEventListener("mouseleave", posicionPag, false);
+document.addEventListener('mousemove', posicionCliente);
+document.addEventListener("keypress", presionarTecla);
 
-function updateDisplay(event) 
+function posicionPag(e) 
 {
-    pageX.innerText = event.pageX;
-    pageY.innerText = event.pageY;
+    parr2.innerText = "Página [" + e.pageX + ", " + e.pageY + "]";
 }
+
+function posicionCliente(e) 
+{
+    parr1.innerText = "Navegador [" + e.clientX + ", " + e.clientY + "]";
+}
+
 
 function cambiarColor()
 {
     caja.style.backgroundColor = "#FFFFCC";
-}
-
-function cambiarColor2()
-{
-    caja.style.backgroundColor = "#CCE6FF";
 }
 
 function volverABlanco()
@@ -41,15 +37,12 @@ function funcionRaton()
     ratonTeclado.innerHTML = "Ratón";
 }
 
-function teclado()
-{
-    ratonTeclado.innerHTML = "Teclado";
-}
-
 function presionarTecla(e)
 {
     let tecla = e.key;
     let codTecla = e.keyCode;
-    teclaP.innerHTML = "Carácter[" + tecla + "]";
-    codTeclaP.innerHTML = "Código[" + codTecla + "]";
+    parr1.innerHTML = "Carácter [" + tecla + "]";
+    parr2.innerHTML = "Código [" + codTecla + "]";
+    caja.style.backgroundColor = "#CCE6FF";
+    ratonTeclado.innerHTML = "Teclado";
 }
