@@ -1,28 +1,25 @@
-window.onload = inicio;
+document.addEventListener("DOMContentLoaded", inicio);
+
+function muestraOculta()
+{
+    if (this.innerHTML === "Ocultar contenidos")
+    {
+        document.getElementById("contenidos_" + this.id.slice(7)).style.display = "none";
+        this.innerHTML = "Mostrar contenidos";
+        return;
+    }
+    else
+    {
+        document.getElementById("contenidos_" + this.id.slice(7)).style.display = "block";
+        this.innerHTML = "Ocultar contenidos";
+    } 
+}
 
 function inicio()
 {
-    contenido = document.getElementById("contenidos_1");
-    enlace = document.getElementById("enlace_1");
-    contenido = document.getElementById("contenidos_2");
-    enlace = document.getElementById("enlace_2");
-    contenido = document.getElementById("contenidos_3");
-    enlace = document.getElementById("enlace_3");
-    enlace.addEventListener("click", muestraOculta)
-
-    function muestraOculta(e) {
-        elemento = e.target;
-        console.log(e);
-        console.log(elemento);
-        if (contenido.style.display === "none")
-        {
-            contenido.style.display = "block";
-            enlace.innerHTML = "Ocultar contenidos";
-        }
-        else
-        {
-            contenido.style.display = "none";
-            enlace.innerHTML = "Mostrar contenidos";
-        } 
+    let enlaces = document.getElementsByTagName("a");
+    for(let i = 0; i < enlaces.length; i++)
+    {
+        enlaces[i].addEventListener("click", muestraOculta);
     }
 }
